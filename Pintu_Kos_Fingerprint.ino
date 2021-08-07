@@ -13,7 +13,7 @@ Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 #define RELAY 8 //relay pin
 #define BUZZER 5 //buzzer pin
-#define ACCESS_DELAY 5000
+#define ACCESS_DELAY 1000
 
 const int button1 = 3;
 const int button2 = 4;
@@ -30,6 +30,7 @@ int buttonState3 = 0;
 boolean modePassword = false;
 String inputPassword = "";
 String validPassword = "111";
+long validJarak = 45;
 String input = "";
 int waktu = 0;
 boolean valid = false;
@@ -118,7 +119,7 @@ void loop()
   buttonState2 = digitalRead(button2);
   buttonState3 = digitalRead(button3);
 
-  if(jarak < 25){
+  if(jarak < validJarak){
     openDoor();
   }
 
